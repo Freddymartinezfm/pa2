@@ -17,20 +17,31 @@ void print(Employee *list[], int size);
 
 void sort(Employee *arr[], int size, bool (*sortType)(Employee &, Employee&));
 
-bool ascendingSSN(Employee  &lhs, Employee &rhs);
-bool descendingSSN(Employee  &lhs, Employee &rhs);
+// bool ascendingSSN(Employee  &lhs, Employee &rhs);
+// bool descendingSSN(Employee  &lhs, Employee &rhs);
+
+bool bubble(Employee &l, Employee &r);
+bool selectionCompare(Employee  &lhs, Employee &rhs);
+bool insertionCompare(Employee  &lhs, Employee &rhs);
 
 Employee *list [MAX_CAPACITY];
 
 int main(){
+	bool (*typeOfAction)(Employee &, Employee &);
+
 	getRawData();
+
+
+	// TODO: Add input from arguments from command line 
+
 	print(list, MAX_CAPACITY);
 	bool running = true;
 
 	while (running){		
-		OnOptionsMenu menuOptions("Search Menu");
+		OnOptionsMenu menuOptions("PA2");
 		menuOptions.show();
 		int menuSelection;
+		
 		if (!(std::cin >> menuSelection).good()){
 			std::cin.clear();
 			std::cin.ignore(256, '\n');
@@ -38,23 +49,30 @@ int main(){
 		} else {
 			switch (menuSelection){
 			case 1:
-				// sortType = &bubbleSort;
+				typeOfAction = &bubble;
+				sort(list, MAX_CAPACITY, typeOfAction);
+				print(list, MAX_CAPACITY);
 				break;
 			case 2:
-				sort(list, MAX_CAPACITY, descendingSSN);
-			// sortType = &bubbleSort;
+				typeOfAction = &bubble;
+				sort(list, MAX_CAPACITY, typeOfAction);
+				print(list, MAX_CAPACITY);
 				break;
 			case 3:
-				sort(list, MAX_CAPACITY,  ascendingSSN);
-			// sortType = &bubbleSort;
+				typeOfAction = &bubble;
+				sort(list, MAX_CAPACITY, typeOfAction);
+				print(list, MAX_CAPACITY);
 				break;
-			case 7:
+			case 4:
+				print(list, MAX_CAPACITY);
 				clear(list, MAX_CAPACITY);
 				running = false;
 				break;
 			default:
 				std::cout << "Error with selection \n";
 			}
+
+			
 		}
 	}
 
@@ -64,8 +82,7 @@ int main(){
 
 void print(Employee *list[], int size){
 	for (int i = 0; i < MAX_CAPACITY; i++) { 
-
-		std::cout << *list[i];
+		std::cout << *list[i]; // 
 	} 
 }
 
@@ -106,38 +123,33 @@ void sort(Employee *arr[], int size, bool (*compareFncPtr)(Employee &, Employee&
 		}
 		std::swap(list[i], list[best]);
 	}
+
 }
 
-void action(Employee *arr[], int size, bool (*typeOfAction)(Employee &, Employee&)){
-	for (int i = 0; i < MAX_CAPACITY; i++){
-		int best = i;
-		for (int curr = i + 1; curr < MAX_CAPACITY; curr ++){
-			Employee *temp = list[best];
-			Employee *t = list[curr];
-			if (typeOfAction(*temp, *t)){
-				best = curr;
-			}
-		}
-		std::swap(list[i], list[best]);
-	}
+
+// using last name 
+bool bubble(Employee &l, Employee &r){
+	return l.getSSN() < r.getSSN();
+
 }
 
-bool ascendingSSN(Employee & lhs, Employee& rhs){
-	return lhs > rhs;
-}
-
-bool descendingSSN(Employee & lhs, Employee& rhs){
-	return lhs.getSSN() < rhs.getSSN();
-}
-
-// bool bubbleSort(Employee *arr[], int size){
-// 	return lhs > rhs;
-// }
-
+// using SSN
 // bool insertionSort(Employee *arr[], int size){
 // 	return lhs.getSSN() < rhs.getSSN();
 // }
 
+
+// using salary
 // bool selectionSort(Employee *arr[], int size){
+// 	return lhs.getSSN() < rhs.getSSN();
+// }
+
+
+
+// bool ascendingSSN(Employee & lhs, Employee& rhs){
+// 	return lhs > rhs;
+// }
+
+// bool descendingSSN(Employee & lhs, Employee& rhs){
 // 	return lhs.getSSN() < rhs.getSSN();
 // }

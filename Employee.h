@@ -11,8 +11,6 @@ using namespace std;
 class Employee {
 
 protected:
-    static std::string cTAG;
-    static std::string mTAG;
     string code;
     string ssn;
     string first;

@@ -2,13 +2,9 @@
 #include <iomanip>
 #include "Employee.h"
 
-std::string Employee::cTAG = "Employee";
-std::string Employee::mTAG = "";
-
-
-
 
 Employee::Employee(){
+    // std::cout << "Employee()";
     
 }
 Employee::Employee(vector<string>& fields){
@@ -93,7 +89,12 @@ bool Employee::operator>(const Employee& right){
 
 // copy constructor and operator = 
 
-Employee::Employee(const Employee& rhs){
+Employee::Employee(const Employee& rhs) {
+        Employee *newE = new Employee;
+
+    for (int i = 0; i < 22; i++){
+        newE->setDept(rhs.getDept());
+    }     
     std::cout << "Copy constructor " ;
 
 }
@@ -115,7 +116,7 @@ ostream& operator<<(ostream& os, const Employee& employee) {
         << std::setw(16) << employee.getName() << ""
         << std::setw(15)  << employee.getDept() << ""
         << std::setw(18) << std::right << employee.getRole() << ""
-        << std::setw(14) << employee.getSalary() << "" << std::fixed << setprecision(2) << std::endl;
+        << std::setw(14) << employee.getSalary() << std::fixed << setprecision(2) << std::endl;
 
     return os;
 }
