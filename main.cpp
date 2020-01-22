@@ -16,24 +16,16 @@ void clear(Employee *list[], int size);
 void print(Employee *list[], int size);
 
 void sort(Employee *arr[], int size, bool (*sortType)(Employee &, Employee&));
-
-// bool ascendingSSN(Employee  &lhs, Employee &rhs);
-// bool descendingSSN(Employee  &lhs, Employee &rhs);
-
 bool bubble(Employee &l, Employee &r);
-bool selectionCompare(Employee  &lhs, Employee &rhs);
-bool insertionCompare(Employee  &lhs, Employee &rhs);
+bool selection(Employee  &lhs, Employee &rhs);
+bool insertion(Employee  &lhs, Employee &rhs);
 
 Employee *list [MAX_CAPACITY];
 
 int main(){
 	bool (*typeOfAction)(Employee &, Employee &);
-
 	getRawData();
-
-
 	// TODO: Add input from arguments from command line 
-
 	print(list, MAX_CAPACITY);
 	bool running = true;
 
@@ -113,23 +105,36 @@ void getRawData(){
 
 void sort(Employee *arr[], int size, bool (*compareFncPtr)(Employee &, Employee&)){
 	for (int i = 0; i < MAX_CAPACITY; i++){
-		int best = i;
-		for (int curr = i + 1; curr < MAX_CAPACITY; curr ++){
-			Employee *temp = list[best];
-			Employee *t = list[curr];
-			if (compareFncPtr(*temp, *t)){
-				best = curr;
+		for (int j = 0; j < MAX_CAPACITY - 1 -i; j++){
+
+				// TODO : swap
+			if (compareFncPtr(*list[j], *list[j+1])){
+				std::swap(list[j], list[j+1]);
+
 			}
 		}
-		std::swap(list[i], list[best]);
 	}
+	
+	
+	
+	// for (int i = 0; i < MAX_CAPACITY; i++){
+	// 	int best = i;
+	// 	for (int curr = i + 1; curr < MAX_CAPACITY; curr ++){
+	// 		Employee *temp = list[best];
+	// 		Employee *t = list[curr];
+	// 		if (compareFncPtr(*temp, *t)){
+	// 			best = curr;
+	// 		}
+	// 	}
+	// 	std::swap(list[i], list[best]);
+	// }
 
 }
 
 
 // using last name 
 bool bubble(Employee &l, Employee &r){
-	return l.getSSN() < r.getSSN();
+	return l.getName() > r.getName();
 
 }
 
