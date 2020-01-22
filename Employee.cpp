@@ -2,8 +2,14 @@
 #include <iomanip>
 #include "Employee.h"
 
+std::string Employee::cTAG = "Employee";
+std::string Employee::mTAG = "";
+
+
+
 
 Employee::Employee(){
+    
 }
 Employee::Employee(vector<string>& fields){
     code = fields[0];
@@ -17,6 +23,7 @@ Employee::Employee(vector<string>& fields){
 
 
 Employee::~Employee(){
+    
 
     
 }
@@ -108,7 +115,7 @@ ostream& operator<<(ostream& os, const Employee& employee) {
         << std::setw(16) << employee.getName() << ""
         << std::setw(15)  << employee.getDept() << ""
         << std::setw(18) << std::right << employee.getRole() << ""
-        << std::setw(14) << employee.getSalary() << "" << std::fixed << setprecision(2);
+        << std::setw(14) << employee.getSalary() << "" << std::fixed << setprecision(2) << std::endl;
 
     return os;
 }
