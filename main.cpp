@@ -16,7 +16,10 @@ void clear(Employee *list[], int size);
 void print(Employee *list[], int size);
 
 void sort(Employee *arr[], int size, bool (*sortType)(Employee &, Employee&));
-bool bubble(Employee &l, Employee &r);
+
+template <typename T>
+bool bubble(T &l, T &r);
+
 bool selection(Employee  &lhs, Employee &rhs);
 bool insertion(Employee  &lhs, Employee &rhs);
 
@@ -133,7 +136,8 @@ void sort(Employee *arr[], int size, bool (*compareFncPtr)(Employee &, Employee&
 
 
 // using last name 
-bool bubble(Employee &l, Employee &r){
+template <typename T>
+bool bubble(T &l, T &r){
 	return l.getName() > r.getName();
 
 }
