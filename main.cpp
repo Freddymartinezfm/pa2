@@ -9,16 +9,16 @@
 #include <string>
 
 const std::string input = "employees.txt";
-const int MAX_CAPACITY {22};
+static const int MAX_CAPACITY {22};
 void getRawData();
 
 void clear(Employee *list[], int size);
 void print(Employee *list[], int size);
-
+void swapObj(Employee &, Employee &);
 void sort(Employee *arr[], int size, bool (*sortType)(Employee &, Employee&));
 
-template <typename T>
-bool bubble(T &l, T &r);
+// template <typename T>
+bool bubble(Employee &l, Employee &r);
 
 bool selection(Employee  &lhs, Employee &rhs);
 bool insertion(Employee  &lhs, Employee &rhs);
@@ -73,8 +73,6 @@ int main(){
 
 }
 
-// function ptr for records(Employee *list[], int size, void (*fp)()); // to either print, or clear or sort 
-
 void print(Employee *list[], int size){
 	for (int i = 0; i < MAX_CAPACITY; i++) { 
 		std::cout << *list[i]; // 
@@ -109,10 +107,10 @@ void getRawData(){
 void sort(Employee *arr[], int size, bool (*compareFncPtr)(Employee &, Employee&)){
 	for (int i = 0; i < MAX_CAPACITY; i++){
 		for (int j = 0; j < MAX_CAPACITY - 1 -i; j++){
-
-				// TODO : swap
 			if (compareFncPtr(*list[j], *list[j+1])){
-				std::swap(list[j], list[j+1]);
+
+				// std::swap(list[j], list[j+1]);
+				swapObj(*list[j], *list[j+1]);
 
 			}
 		}
@@ -134,10 +132,17 @@ void sort(Employee *arr[], int size, bool (*compareFncPtr)(Employee &, Employee&
 
 }
 
+void swapObj(Employee &a, Employee &b){
+	Employee temp (a);
+	a = b;
+	b  = temp;
+
+}
+
 
 // using last name 
-template <typename T>
-bool bubble(T &l, T &r){
+// template <typename T>
+bool bubble(Employee &l, Employee &r){
 	return l.getName() > r.getName();
 
 }
