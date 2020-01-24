@@ -17,7 +17,7 @@ protected:
     string last;
     string department;
     string   role;
-    double   salary;
+    double   salary; 
     
 
 public:

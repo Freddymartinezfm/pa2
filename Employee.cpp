@@ -90,13 +90,14 @@ bool Employee::operator>(const Employee& right){
 // copy constructor and operator = 
 
 Employee::Employee(const Employee& rhs) {
-        Employee *newE = new Employee;
-
-    for (int i = 0; i < 22; i++){
-        newE->setDept(rhs.getDept());
-    }     
     std::cout << "Copy constructor " ;
-
+    this->setName(rhs.first, rhs.last);
+    this->setSSN(rhs.getSSN());
+    this->setDept(rhs.getDept());
+    this->setSalary(rhs.getSalary());
+    this->setEmpCode(rhs.getEmpCode());
+    this->setRole(rhs.role);
+    // TODO add rest of fields 
 }
 
 
