@@ -90,34 +90,24 @@ bool Employee::operator>(const Employee& right){
 // copy constructor and operator = 
 
 Employee::Employee(const Employee& rhs) {
-    std::cout << "Copy constructor " ;
     this->setName(rhs.first, rhs.last);
     this->setSSN(rhs.getSSN());
     this->setDept(rhs.getDept());
     this->setSalary(rhs.getSalary());
     this->setEmpCode(rhs.getEmpCode());
     this->setRole(rhs.role);
-    // TODO add rest of fields 
 }
 
 
 
 ostream& operator<<(ostream& os, const Employee& employee) {
-    os 
-        // debug
-        // << std::setw(1) << employee.getEmpCode() << ""
-        // << std::setw(14) << std::setfill('*')  << employee.getSSN() << ""
-        // << std::setw(16) << std::setfill('*') << employee.getName() << ""
-        // << std::setw(15) << std::setfill('*')   << employee.getDept() << ""
-        // << std::setw(18) << std::setfill('*')  << employee.getRole() << ""
-        // << std::setw(14) << std::setfill('*')  << employee.getSalary() << "";
-
-        << std::setw(1)  << employee.getEmpCode() << " "
-        << std::setw(14) << employee.getSSN() << ""
-        << std::setw(16) << employee.getName() << ""
-        << std::setw(15)  << employee.getDept() << ""
-        << std::setw(18) << std::right << employee.getRole() << ""
-        << std::setw(14) << employee.getSalary() << std::fixed << setprecision(2) << std::endl;
+    os  << std::setw(3) << std::left << employee.getEmpCode()
+        << std::setw(15) << std::left <<  employee.getSSN() 
+        << std::setw(20) << std::left << employee.getName()
+        << std::setw(20) << std::left << employee.getDept()
+        << std::setw(20) << std::left << employee.getRole()
+        << std::setw(20) << std::right << employee.getSalary()
+        << std::endl;
 
     return os;
 }
