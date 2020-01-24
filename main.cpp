@@ -16,10 +16,10 @@ void clear(Employee *list[], int size);
 void print(Employee *list[], int size);
 void swapObj(Employee &, Employee &);
 
-void sortT(Employee *arr[], int size, void (*sortType)(Employee *arr[], int size));
+void sort(Employee *arr[], int size, void (*sortType)(Employee *arr[], int size));
 
-void bubbleT(Employee *arr[], int size);
-bool selection(Employee  &lhs, Employee &rhs);
+void bubble(Employee *arr[], int size);
+void selection(Employee *arr[], int size);
 bool insertion(Employee  &lhs, Employee &rhs);
 
 Employee *list [MAX_CAPACITY];
@@ -32,7 +32,7 @@ int main(){
 
 	while (running){		
 		OnOptionsMenu menuOptions("PA2");
-		menuOptions.show();
+		menuOptions.menu();
 		int menuSelection;
 		
 		if (!(std::cin >> menuSelection).good()){
@@ -42,11 +42,14 @@ int main(){
 		} else {
 			switch (menuSelection){
 			case 1:
-				ptr = &bubbleT;
-				sortT(list, MAX_CAPACITY, ptr);
+				ptr = &bubble;
+				sort(list, MAX_CAPACITY, ptr);
+				menuOptions.header();
 				print(list, MAX_CAPACITY);
 				break;
 			case 2:
+				ptr = &selection;
+				sort(list, MAX_CAPACITY, ptr);
 				print(list, MAX_CAPACITY);
 				break;
 			case 3:
@@ -94,8 +97,8 @@ void getRawData(){
 	inFile.close();
 }
 
-	void sortT(Employee *arr[], int size,  void (*compareFncPtr)(Employee *arr[], int size)){
-	compareFncPtr(arr, size);
+	void sort(Employee *arr[], int size,  void (*sortFunc)(Employee *arr[], int size)){
+		sortFunc(arr, size);
 }
 
 void swapObj(Employee &a, Employee &b){
@@ -104,7 +107,7 @@ void swapObj(Employee &a, Employee &b){
 	b  = temp;
 
 }
-void bubbleT(Employee *arr[], int size){
+void bubble(Employee *arr[], int size){
 	for (int i = 0; i < MAX_CAPACITY; i++){
 		for (int j = 0; j < MAX_CAPACITY - i - 1; j++){
 			if (list[j]->getName() > list[j+1]->getName()){
@@ -115,10 +118,10 @@ void bubbleT(Employee *arr[], int size){
 	}
 }
 
-void two(Employee *arr[], int size){
+void selection(Employee *arr[], int size){
 	for (int i = 0; i < MAX_CAPACITY; i++){
-		for (int j = 0; j < (MAX_CAPACITY - 1) - i; j++){
-			if (list[i]->getName() > list[j+1]->getName()){
+		for (int j = 0; j < MAX_CAPACITY - i - 1; j++){
+			if (list[j]->getName() > list[j+1]->getName()){
 				swapObj(*list[j], *list[j+1]);
 
 			}
@@ -126,6 +129,3 @@ void two(Employee *arr[], int size){
 	}
 }
 
-bool selection(Employee &l, Employee &r){
-	return l.getSSN() > r.getSSN();
-}
