@@ -20,7 +20,7 @@ void sort(Employee *arr[], int size, void (*sortType)(Employee *arr[], int size)
 
 void bubble(Employee *arr[], int size);
 void selection(Employee *arr[], int size);
-bool insertion(Employee  &lhs, Employee &rhs);
+void insertion(Employee *arr[], int size);
 
 Employee *list [MAX_CAPACITY];
 
@@ -50,19 +50,24 @@ int main(){
 			case 2:
 				ptr = &selection;
 				sort(list, MAX_CAPACITY, ptr);
+				menuOptions.header();
 				print(list, MAX_CAPACITY);
 				break;
 			case 3:
+				ptr = &insertion;
+				sort(list, MAX_CAPACITY, ptr);
+				menuOptions.header();
 				print(list, MAX_CAPACITY);
 				break;
 			case 4:
-				print(list, MAX_CAPACITY);
-				clear(list, MAX_CAPACITY);
 				running = false;
 				break;
+			
 			default:
 				std::cout << "Error with selection \n";
 			}
+
+			
 		}
 	}
 }
@@ -97,7 +102,7 @@ void getRawData(){
 	inFile.close();
 }
 
-	void sort(Employee *arr[], int size,  void (*sortFunc)(Employee *arr[], int size)){
+void sort(Employee *arr[], int size,  void (*sortFunc)(Employee *arr[], int size)){
 		sortFunc(arr, size);
 }
 
@@ -119,6 +124,17 @@ void bubble(Employee *arr[], int size){
 }
 
 void selection(Employee *arr[], int size){
+	for (int i = 0; i < MAX_CAPACITY; i++){
+		for (int j = 0; j < MAX_CAPACITY - i - 1; j++){
+			if (list[j]->getName() > list[j+1]->getName()){
+				swapObj(*list[j], *list[j+1]);
+
+			}
+		}
+	}
+}
+
+void insertion(Employee *arr[], int size){
 	for (int i = 0; i < MAX_CAPACITY; i++){
 		for (int j = 0; j < MAX_CAPACITY - i - 1; j++){
 			if (list[j]->getName() > list[j+1]->getName()){
