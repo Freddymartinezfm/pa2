@@ -9,11 +9,12 @@
 #include <string>
 
 const std::string input = "employees.txt";
-static const int MAX_CAPACITY {22};
+static const int MAX_CAPACITY {23};
 void getRawData();
 
 void clear(Employee *list[], int size);
 void print(Employee *list[], int size);
+
 void swapObj(Employee &, Employee &);
 
 void sort(Employee *arr[], int size, void (*sortType)(Employee *arr[], int size));
@@ -73,7 +74,7 @@ int main(){
 }
 
 void print(Employee *list[], int size){
-	for (int i = 0; i < MAX_CAPACITY; i++) { 
+	for (int i = 0; i < size; i++) { 
 		std::cout << *list[i];
 	} 
 }
@@ -106,6 +107,7 @@ void sort(Employee *arr[], int size,  void (*sortFunc)(Employee *arr[], int size
 		sortFunc(arr, size);
 }
 
+
 void swapObj(Employee &a, Employee &b){
 	Employee temp (a);
 	a = b;
@@ -113,35 +115,44 @@ void swapObj(Employee &a, Employee &b){
 
 }
 void bubble(Employee *arr[], int size){
-	for (int i = 0; i < MAX_CAPACITY; i++){
-		for (int j = 0; j < MAX_CAPACITY - i - 1; j++){
+	// for (int i = 0; i < size; i++){
+	// 	for (int j = 0; j < size - i - 1; j++){
+	// 		if (list[j]->getName() > list[j+1]->getName()){
+	// 			swapObj(*list[j], *list[j+1]);
+
+	// 		}
+	// 	}
+	// }
+
+	for (int i = 0; i < size -1; i++){
+		for (int j = 0; j < size - i - 1; j++){
 			if (list[j]->getName() > list[j+1]->getName()){
 				swapObj(*list[j], *list[j+1]);
-
 			}
-		}
+			
+		}		
+
 	}
 }
 
 void selection(Employee *arr[], int size){
-	for (int i = 0; i < MAX_CAPACITY; i++){
-		for (int j = 0; j < MAX_CAPACITY - i - 1; j++){
-			if (list[j]->getName() > list[j+1]->getName()){
-				swapObj(*list[j], *list[j+1]);
-
-			}
-		}
+		for (int i = 0; i < size - 1; i++){
+			
 	}
 }
+	
 
 void insertion(Employee *arr[], int size){
-	for (int i = 0; i < MAX_CAPACITY; i++){
-		for (int j = 0; j < MAX_CAPACITY - i - 1; j++){
-			if (list[j]->getName() > list[j+1]->getName()){
-				swapObj(*list[j], *list[j+1]);
+	// TODO - finish insertion on salary 
 
-			}
-		}
-	}
+	
+	// for (int i = 0; i < size; i++){
+	// 	for (int j = 0; j < size - i - 1; j++){
+	// 		if (list[j]->getName() > list[j+1]->getName()){
+	// 			swapObj(*list[j], *list[j+1]);
+
+	// 		}
+	// 	}
+	// }
 }
 
