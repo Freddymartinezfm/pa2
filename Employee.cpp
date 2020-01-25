@@ -4,7 +4,6 @@
 
 
 Employee::Employee(){
-    // std::cout << "Employee()";
     
 }
 Employee::Employee(vector<string>& fields){
@@ -101,12 +100,12 @@ Employee::Employee(const Employee& rhs) {
 
 
 ostream& operator<<(ostream& os, const Employee& employee) {
-    os  << std::setw(3) << std::left << employee.getEmpCode()
+    os  << std::setw(8) << std::left << employee.getEmpCode()
         << std::setw(15) << std::left <<  employee.getSSN() 
-        << std::setw(20) << std::left << employee.getName()
-        << std::setw(20) << std::left << employee.getDept()
-        << std::setw(20) << std::left << employee.getRole()
-        << std::setw(20) << std::right << employee.getSalary()
+        << std::setw(18) << std::left << employee.getName()
+        << std::setw(16) << std::left << employee.getDept()
+        << std::setw(19) << std::left << employee.getRole()
+        << std::setw(9) << std::right << employee.getSalary()
         << std::endl;
 
     return os;
