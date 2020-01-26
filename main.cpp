@@ -9,18 +9,19 @@
 #include <string>
 
 const std::string input = "employees.txt";
-static const int MAX_CAPACITY {22};
+static const int MAX_CAPACITY {23};
 void getRawData();
 
 void clear(Employee *list[], int size);
 void print(Employee *list[], int size);
+
 void swapObj(Employee &, Employee &);
 
 void sort(Employee *arr[], int size, void (*sortType)(Employee *arr[], int size));
 
 void bubble(Employee *arr[], int size);
 void selection(Employee *arr[], int size);
-bool insertion(Employee  &lhs, Employee &rhs);
+void insertion(Employee *arr[], int size);
 
 Employee *list [MAX_CAPACITY];
 
@@ -31,7 +32,7 @@ int main(){
 	bool running = true;
 
 	while (running){		
-		OnOptionsMenu menuOptions("PA2");
+		OnOptionsMenu menuOptions("PA2", 85);
 		menuOptions.menu();
 		int menuSelection;
 		
@@ -50,25 +51,30 @@ int main(){
 			case 2:
 				ptr = &selection;
 				sort(list, MAX_CAPACITY, ptr);
+				menuOptions.header();
 				print(list, MAX_CAPACITY);
 				break;
 			case 3:
+				ptr = &insertion;
+				sort(list, MAX_CAPACITY, ptr);
+				menuOptions.header();
 				print(list, MAX_CAPACITY);
 				break;
 			case 4:
-				print(list, MAX_CAPACITY);
-				clear(list, MAX_CAPACITY);
 				running = false;
 				break;
+			
 			default:
 				std::cout << "Error with selection \n";
 			}
+
+			
 		}
 	}
 }
 
 void print(Employee *list[], int size){
-	for (int i = 0; i < MAX_CAPACITY; i++) { 
+	for (int i = 0; i < size; i++) { 
 		std::cout << *list[i];
 	} 
 }
@@ -97,9 +103,10 @@ void getRawData(){
 	inFile.close();
 }
 
-	void sort(Employee *arr[], int size,  void (*sortFunc)(Employee *arr[], int size)){
+void sort(Employee *arr[], int size,  void (*sortFunc)(Employee *arr[], int size)){
 		sortFunc(arr, size);
 }
+
 
 void swapObj(Employee &a, Employee &b){
 	Employee temp (a);
@@ -108,24 +115,60 @@ void swapObj(Employee &a, Employee &b){
 
 }
 void bubble(Employee *arr[], int size){
-	for (int i = 0; i < MAX_CAPACITY; i++){
-		for (int j = 0; j < MAX_CAPACITY - i - 1; j++){
+	// for (int i = 0; i < size; i++){
+	// 	for (int j = 0; j < size - i - 1; j++){
+	// 		if (list[j]->getName() > list[j+1]->getName()){
+	// 			swapObj(*list[j], *list[j+1]);
+
+	// 		}
+	// 	}
+	// }
+
+	for (int i = 0; i < size -1; i++){
+		for (int j = 0; j < size - i - 1; j++){
 			if (list[j]->getName() > list[j+1]->getName()){
 				swapObj(*list[j], *list[j+1]);
-
 			}
-		}
+			
+		}		
+
 	}
 }
 
 void selection(Employee *arr[], int size){
-	for (int i = 0; i < MAX_CAPACITY; i++){
-		for (int j = 0; j < MAX_CAPACITY - i - 1; j++){
-			if (list[j]->getName() > list[j+1]->getName()){
-				swapObj(*list[j], *list[j+1]);
+		
 
+		for (int i = 0; i < size - 1; i++){
+			int maxIndex = 0;
+			for (int j = 1; j <= size - 1 - i  ; j++){
+				if (arr[j]->getSSN() > arr[maxIndex]->getSSN()){
+					maxIndex = j;
+				}
 			}
-		}
+			swapObj(*arr[size - 1 -  i], *arr[maxIndex]);
+			std::cout << arr[size -1 -i]->getSSN() << " \n" ;
+	}
+
+// another way
+	// for (int i = 0; i < size - 1; i++){
+	// 		int maxIndex = i;
+	// 		for (int j = i; j < size; j++){
+	// 			if (arr[j]->getSSN() > arr[maxIndex]->getSSN()){
+	// 				maxIndex = j;
+	// 			}
+	// 		}
+	// 		swapObj(*arr[i], *arr[maxIndex]);
+	// }
+}
+	
+
+void insertion(Employee *arr[], int size){
+	// TODO - finish insertion on salary 
+
+	
+	for (int i = 0; i < size; i++){
+
+
 	}
 }
 
