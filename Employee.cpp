@@ -82,9 +82,9 @@ bool Employee::operator>(const Employee& right){
     return this->getSSN() > right.getSSN();
 }
 
-// bool Employee::operator==(Employee& right){
-//     return this->getSSN() == right.getSSN();
-// }
+bool Employee::operator==(Employee& right){
+    return this->getSSN() == right.getSSN();
+}
 
 // copy constructor and operator = 
 
