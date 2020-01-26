@@ -115,15 +115,16 @@ void swapObj(Employee &a, Employee &b){
 
 }
 void bubble(Employee *arr[], int size){
-	// for (int i = 0; i < size; i++){
-	// 	for (int j = 0; j < size - i - 1; j++){
-	// 		if (list[j]->getName() > list[j+1]->getName()){
-	// 			swapObj(*list[j], *list[j+1]);
-
-	// 		}
-	// 	}
-	// }
-
+	/*
+	 * time complexity is O  n squared
+	 * 
+	 * 
+	 * 
+	 * 
+	 * 
+	 * 
+	 * 
+	*/
 	for (int i = 0; i < size -1; i++){
 		for (int j = 0; j < size - i - 1; j++){
 			if (list[j]->getName() > list[j+1]->getName()){
@@ -136,8 +137,17 @@ void bubble(Employee *arr[], int size){
 }
 
 void selection(Employee *arr[], int size){
-		
-
+	/*
+	 * [unsorted | sorted]
+	 * 
+	 * Loop through the entire array and 
+	 * assume the first element in the array is the max value
+	 * With the inner loop, use j to compare with the max at each iteration
+	 * update max to j ,  if j is larger
+	 * swap the max into the sorted array
+	 * Keep looping, deducting the outer i each time
+	 * 
+	*/
 		for (int i = 0; i < size - 1; i++){
 			int maxIndex = 0;
 			for (int j = 1; j <= size - 1 - i  ; j++){
@@ -149,24 +159,25 @@ void selection(Employee *arr[], int size){
 			std::cout << arr[size -1 -i]->getSSN() << " \n" ;
 	}
 
-// another way
-	// for (int i = 0; i < size - 1; i++){
-	// 		int maxIndex = i;
-	// 		for (int j = i; j < size; j++){
-	// 			if (arr[j]->getSSN() > arr[maxIndex]->getSSN()){
-	// 				maxIndex = j;
-	// 			}
-	// 		}
-	// 		swapObj(*arr[i], *arr[maxIndex]);
-	// }
+
 }
 	
 
 void insertion(Employee *arr[], int size){
-	// TODO - finish insertion on salary 
+	/*
+	 *
+	 * 
+	 * 
+	 * 
+	 * 
+	*/
 
 	
-	for (int i = 0; i < size; i++){
+	for (int i = 0; i < size - 1; i++){
+	
+		
+		
+		std::cout << *arr[i] << "\n" ;
 
 
 	}

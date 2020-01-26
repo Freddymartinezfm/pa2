@@ -43,21 +43,12 @@ public:
 
     double getSalary() const;
     void setSalary(double);
-
-
-    //operator< should work based on ssn
-    //Employee(const Employee&); optional
-    //Employee& operator=(const Employee&); optional
     bool operator<(const Employee&);
     bool operator>(const Employee&);
     bool operator==(Employee&);
-    
-
-    // TODO copy constructio 
-
     Employee(const Employee&);
 
-    class INVALID_NUMBER_OF_INPUTS {  };
+    class INVALID {  };
     
 
     friend  ostream& operator<<(ostream&, const Employee&);
