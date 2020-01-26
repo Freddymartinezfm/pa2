@@ -22,6 +22,6 @@ Log.o: Log.cpp Log.h
 # clean:
 # 	rm -f *.o  pa1
 
-# clean:
-# 	del -F *.o
+clean:
+	del -F *.o
 
