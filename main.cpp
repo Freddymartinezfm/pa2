@@ -156,7 +156,6 @@ void selection(Employee *arr[], int size){
 				}
 			}
 			swapObj(*arr[size - 1 -  i], *arr[maxIndex]);
-			std::cout << arr[size -1 -i]->getSSN() << " \n" ;
 	}
 
 
