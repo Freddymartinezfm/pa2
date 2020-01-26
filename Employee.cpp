@@ -2,10 +2,8 @@
 #include <iomanip>
 #include "Employee.h"
 
+Employee::Employee() {}
 
-Employee::Employee(){
-    
-}
 Employee::Employee(vector<string>& fields){
     code = fields[0];
     ssn = fields[1];
@@ -16,77 +14,41 @@ Employee::Employee(vector<string>& fields){
     salary = stof(fields[6]);
 }
 
+Employee::~Employee() {}
 
-Employee::~Employee(){
-    
+string Employee::getEmpCode() const { return code; }
 
-    
-}
+void Employee::setEmpCode(string newCode){ code = newCode; }
 
-string Employee::getEmpCode() const{
-    return code;
-}
+string Employee::getName() const { return last + "," + first; }
 
-void Employee::setEmpCode(string newCode){
-    code = newCode;
-}
+string Employee::getSSN() const{ return ssn; }
 
-string Employee::getName() const
-{
-    return last + "," + first;
-}
+void Employee::setSSN(string ssn){ this->ssn = ssn; }
+
+string Employee::getDept() const { return department; }
+
+void Employee::setDept(string dept){ this->department = dept; }
+
+string Employee::getRole() const{ return role; }
+
+void Employee::setRole(string role){ this->role = role; }
+
+double Employee::getSalary() const{return salary; }
+
+void Employee::setSalary(double salary){ this->salary = salary; }
+
+bool Employee::operator<(const Employee& right){ return this->getSSN() < right.getSSN(); }
+
+bool Employee::operator>(const Employee& right){ return this->getSSN() > right.getSSN(); }
+
+bool Employee::operator==(Employee& right){ return this->getSSN() == right.getSSN(); }
+
 
 void Employee::setName(string first, string last){
     this->first = first;
     this->last = last;
 }
-
-string Employee::getSSN() const{
-    return ssn;
-}
-
-void Employee::setSSN(string ssn){
-    this->ssn = ssn;
-}
-
-string Employee::getDept() const{
-    return department;
-}
-
-void Employee::setDept(string dept){
-    this->department = dept;
-}
-
-
-string Employee::getRole() const{
-    return role;
-}
-
-void Employee::setRole(string role){
-    this->role = role;
-}
-
-double Employee::getSalary() const{
-    return salary;
-}
-
-void Employee::setSalary(double salary){
-    this->salary = salary;
-}
-
-bool Employee::operator<(const Employee& right){
-    return this->getSSN() < right.getSSN();
-}
-
-bool Employee::operator>(const Employee& right){
-    return this->getSSN() > right.getSSN();
-}
-
-bool Employee::operator==(Employee& right){
-    return this->getSSN() == right.getSSN();
-}
-
-// copy constructor and operator = 
 
 Employee::Employee(const Employee& rhs) {
     this->setName(rhs.first, rhs.last);
@@ -97,10 +59,9 @@ Employee::Employee(const Employee& rhs) {
     this->setRole(rhs.role);
 }
 
-
-
 ostream& operator<<(ostream& os, const Employee& employee) {
-    os  << std::setw(8) << std::left << employee.getEmpCode()
+    os  
+        << std::setw(8) << std::left << employee.getEmpCode()
         << std::setw(15) << std::left <<  employee.getSSN() 
         << std::setw(18) << std::left << employee.getName()
         << std::setw(16) << std::left << employee.getDept()
