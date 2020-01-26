@@ -32,7 +32,7 @@ int main(){
 	bool running = true;
 
 	while (running){		
-		OnOptionsMenu menuOptions("PA2");
+		OnOptionsMenu menuOptions("PA2", 85);
 		menuOptions.menu();
 		int menuSelection;
 		
