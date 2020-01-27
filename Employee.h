@@ -1,41 +1,36 @@
-#ifndef EMPLOYEE_H
-#define EMPLOYEE_H
+#pragma once
 
 #include <string>
 #include <iostream>
 #include <vector>
 #include <cstring>
 
-using namespace std;
-
-
 class Employee {
-
 protected:
-    string code;
-    string ssn;
-    string first;
-    string last;
-    string department;
-    string   role;
-    double   salary;
+    std::string code;
+    std::string ssn;
+    std::string first;
+    std::string last;
+    std::string department;
+    std::string role;
+    double salary;
 public:
     Employee();
     ~Employee();
-    string getName() const;
-    void   setName(string, string);
+    std::string getName() const;
+    void setName(std::string, std::string);
 
-    string getSSN() const;
-    void setSSN(string);
+    std::string getSSN() const;
+    void setSSN(std::string);
 
-    string getDept() const;
-    void setDept(string);
+    std::string getDept() const;
+    void setDept(std::string);
 
-    string getEmpCode() const;
-    void setEmpCode(string);
+    std::string getEmpCode() const;
+    void setEmpCode(std::string);
 
-    string getRole() const;
-    void setRole(string);
+    std::string getRole() const;
+    void setRole(std::string);
 
     double getSalary() const;
     void setSalary(double);
@@ -44,15 +39,6 @@ public:
     bool operator==(Employee&);
     Employee(const Employee&);
 
-    class INVALID {
-    public:
-        INVALID(){}; 
-        INVALID(int selection){ 
-            std::string s = std::to_string(selection);
-            std::cout << "Invalid Input " << s << std::endl; } 
-    };
-
-    friend  ostream& operator<<(ostream&, const Employee&);
+    friend  std::ostream& operator<<(std::ostream&, const Employee&);
 };
-#endif
 

@@ -45,6 +45,8 @@
 		"string_view": "cpp",
 		"locale": "cpp",
 		"xlocbuf": "cpp",
-		"xlocmes": "cpp"
+		"xlocmes": "cpp",
+		"sstream": "cpp",
+		"strstream": "cpp"
 	}
 }

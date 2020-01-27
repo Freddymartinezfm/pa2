@@ -6,36 +6,29 @@ Employee::Employee() {}
 
 Employee::~Employee() {}
 
-string Employee::getEmpCode() const { return code; }
+std::string Employee::getEmpCode() const { return code; }
 
-void Employee::setEmpCode(string newCode){ code = newCode; }
+void Employee::setEmpCode(std::string newCode){ code = newCode; }
 
-string Employee::getName() const { return last + "," + first; }
+std::string Employee::getName() const { return last + "," + first; }
 
-string Employee::getSSN() const{ return ssn; }
+std::string Employee::getSSN() const{ return ssn; }
 
-void Employee::setSSN(string ssn){ this->ssn = ssn; }
+void Employee::setSSN(std::string ssn){ this->ssn = ssn; }
 
-string Employee::getDept() const { return department; }
+std::string Employee::getDept() const { return department; }
 
-void Employee::setDept(string dept){ this->department = dept; }
+void Employee::setDept(std::string dept){ this->department = dept; }
 
-string Employee::getRole() const{ return role; }
+std::string Employee::getRole() const{ return role; }
 
-void Employee::setRole(string role){ this->role = role; }
+void Employee::setRole(std::string role){ this->role = role; }
 
 double Employee::getSalary() const{return salary; }
 
 void Employee::setSalary(double salary){ this->salary = salary; }
 
-// bool Employee::operator<(const Employee& right){ return this->getSSN() < right.getSSN(); }
-
-bool Employee::operator>(const Employee& right){ return this->getSSN() > right.getSSN(); }
-
-bool Employee::operator==(Employee& right){ return this->getSSN() == right.getSSN(); }
-
-
-void Employee::setName(string first, string last){
+void Employee::setName(std::string first, std::string last){
     this->first = first;
     this->last = last;
 }
@@ -49,7 +42,7 @@ Employee::Employee(const Employee& rhs) {
     this->setRole(rhs.role);
 }
 
-ostream& operator<<(ostream& os, const Employee& employee) {
+std::ostream& operator<<(std::ostream& os, const Employee& employee) {
     os  
         << std::setw(8) << std::left << employee.getEmpCode()
         << std::setw(15) << std::left <<  employee.getSSN() 

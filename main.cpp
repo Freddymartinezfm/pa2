@@ -11,6 +11,7 @@
 const std::string input = "employees.txt";
 static const int MAX_CAPACITY {23};
 Employee *list [MAX_CAPACITY];
+const std::string TAG {"Employee"};
 
 void getRawData(const std::string&);
 void clear(Employee *list[], int size);
@@ -29,16 +30,14 @@ int main(int argc, char *argv[]){
 		getRawData(input);
 		print(list, MAX_CAPACITY);
 		bool running = true;
+		OnOptionsMenu menuOptions("PA2", 85);
 
 		while (running){		
-			OnOptionsMenu menuOptions("PA2", 85);
 			menuOptions.menu();
 			int menuSelection;
 			
 			if ((std::cin >> menuSelection).fail()){
-				Employee::INVALID invalid(menuSelection);
-				std::cin.clear();
-				std::cin.ignore(256, '\n');
+				OnOptionsMenu::INPUT_INVALID();
 			} else {
 				switch (menuSelection){
 				case 1:
@@ -58,13 +57,16 @@ int main(int argc, char *argv[]){
 					sort(list, MAX_CAPACITY, ptr);
 					menuOptions.header();
 					print(list, MAX_CAPACITY);
+					
 					break;
 				case 4:
 					running = false;
 					break;
 				default:
-					std::cout << "Not a valid selection \n";
+					OnOptionsMenu::INPUT_NOT_A_VALID_SELECTION();
+
 				}
+				
 			}
 		}
 	} else if (argc > 1){
@@ -72,7 +74,7 @@ int main(int argc, char *argv[]){
 		std::string input {i};
 		std::fstream{input};
 		getRawData(input);
-		print(list, MAX_CAPACITY); // TODO extract method for switch 
+		print(list, MAX_CAPACITY); 
 	}
 }
 
@@ -142,8 +144,9 @@ void insertion(Employee *arr[], int n){
 	for (int i = 0; i < n - 1; i++){
 		for (int j = i + 1; j > 0; j--){
 			if (arr[j]->getSalary() > arr[j-1]->getSalary()){
-				swap(arr[j], arr[j-1]);
+				swapObj(*arr[j], *arr[j-1]);
 			}
 		}
 	}
 }
+
