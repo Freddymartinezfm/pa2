@@ -6,8 +6,8 @@ OnOptionsMenu.o: OnOptionsMenu.h OnOptionsMenu.cpp
 	g++ -c -g -Wall OnOptionsMenu.cpp
 Employee.o: Employee.cpp Employee.h
 	g++ -c -g -Wall Employee.cpp
-# clean:
-# 	rm -f *.o  pa1
 clean:
-	del -F *.o
+	rm -f *.o  pa1
+# clean:
+# 	del -F *.o
 
