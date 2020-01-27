@@ -8,11 +8,15 @@ OnOptionsMenu::OnOptionsMenu() {}
 OnOptionsMenu::OnOptionsMenu(std::string title, int s) : title{title}, size{s}  {}
 
 void OnOptionsMenu::menu(){
-	std::cout << "1. Sort by last name using bubble sort " << std::endl;
-	std::cout << "2. Sort by SSN using selection sort " << std::endl;
-	std::cout << "3. Sort by last salary using insertion sort " << std::endl;
+	std::cout << std::endl << "1. Sort by name.  \t(ascending | bubble)" << std::endl;
+	std::cout << "2. Sort by SSN.  \t(ascending | selection) " << std::endl;
+	std::cout << "3. Sort by salary. \t (descending | insertion)" << std::endl;
 	std::cout << "4. Exit " << std::endl;
 	std::cout << "Select an option: " ;
+}
+
+void OnOptionsMenu::line(int d){ 
+	std::cout << std::string(d, '-') << std::endl;
 }
 
 void OnOptionsMenu::header(){

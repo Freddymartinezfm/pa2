@@ -17,15 +17,15 @@ void getRawData(const std::string&);
 void clear(Employee *list[], int size);
 void print(Employee *list[], int size);
 void swapObj(Employee &, Employee &);
+
 void sort(Employee *arr[], int size, void (*sortType)(Employee *arr[], int size));
+
 void bubble(Employee *arr[], int size);
 void selection(Employee *arr[], int size);
 void insertion(Employee *arr[], int size);
 
-
 int main(int argc, char *argv[]){
 	void (*ptr)( Employee *arr[], int size);
-
 	if (argc < 2){
 		getRawData(input);
 		print(list, MAX_CAPACITY);
@@ -37,7 +37,7 @@ int main(int argc, char *argv[]){
 			int menuSelection;
 			
 			if ((std::cin >> menuSelection).fail()){
-				OnOptionsMenu::INPUT_INVALID();
+				ERROR_CODE::INPUT_INVALID();
 			} else {
 				switch (menuSelection){
 				case 1:
@@ -57,16 +57,14 @@ int main(int argc, char *argv[]){
 					sort(list, MAX_CAPACITY, ptr);
 					menuOptions.header();
 					print(list, MAX_CAPACITY);
-					
 					break;
 				case 4:
 					running = false;
+					menuOptions.line();
 					break;
 				default:
-					OnOptionsMenu::INPUT_NOT_A_VALID_SELECTION();
-
+					ERROR_CODE::INPUT_NOT_A_VALID_SELECTION();
 				}
-				
 			}
 		}
 	} else if (argc > 1){
@@ -104,7 +102,7 @@ void getRawData(const std::string &input){
 		list[count]->setRole(role);
 		list[count++]->setSalary(std::stof(salary));
 	}
-	std::cout << "The size of Employees is " << count  << std::endl;
+	std::cout << std::endl  << "The size of Employees is " << count  << std::endl;
 	inFile.close();
 }
 
