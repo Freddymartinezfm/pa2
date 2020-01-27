@@ -4,16 +4,6 @@
 
 Employee::Employee() {}
 
-Employee::Employee(vector<string>& fields){
-    code = fields[0];
-    ssn = fields[1];
-    first = fields[2];
-    last = fields[3];
-    department = fields[4];
-    role = fields[5];
-    salary = stof(fields[6]);
-}
-
 Employee::~Employee() {}
 
 string Employee::getEmpCode() const { return code; }
@@ -38,7 +28,7 @@ double Employee::getSalary() const{return salary; }
 
 void Employee::setSalary(double salary){ this->salary = salary; }
 
-bool Employee::operator<(const Employee& right){ return this->getSSN() < right.getSSN(); }
+// bool Employee::operator<(const Employee& right){ return this->getSSN() < right.getSSN(); }
 
 bool Employee::operator>(const Employee& right){ return this->getSSN() > right.getSSN(); }
 
@@ -68,6 +58,7 @@ ostream& operator<<(ostream& os, const Employee& employee) {
         << std::setw(19) << std::left << employee.getRole()
         << std::setw(9) << std::right << employee.getSalary()
         << std::endl;
+        
 
     return os;
 }

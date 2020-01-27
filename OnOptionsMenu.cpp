@@ -15,6 +15,7 @@ void OnOptionsMenu::menu(){
 	std::cout << "3. Sort by last salary using insertion sort " << std::endl;
 	std::cout << "4. Exit " << std::endl;
 	std::cout << "Select an option: " ;
+	std::cout << std::endl;
 }
 
 

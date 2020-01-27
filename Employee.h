@@ -4,6 +4,7 @@
 #include <string>
 #include <iostream>
 #include <vector>
+#include <cstring>
 
 using namespace std;
 
@@ -17,29 +18,24 @@ protected:
     string last;
     string department;
     string   role;
-    double   salary; 
-    
-
+    double   salary;
 public:
-
     Employee();
-    Employee(vector<string>&);
     ~Employee();
-
     string getName() const;
     void   setName(string, string);
 
     string getSSN() const;
-    void   setSSN(string);
+    void setSSN(string);
 
     string getDept() const;
-    void   setDept(string);
+    void setDept(string);
 
     string getEmpCode() const;
-    void   setEmpCode(string);
+    void setEmpCode(string);
 
-    string   getRole() const;
-    void     setRole(string);
+    string getRole() const;
+    void setRole(string);
 
     double getSalary() const;
     void setSalary(double);
@@ -48,8 +44,13 @@ public:
     bool operator==(Employee&);
     Employee(const Employee&);
 
-    class INVALID {  };
-    
+    class INVALID {
+    public:
+        INVALID(){}; 
+        INVALID(int selection){ 
+            std::string s = std::to_string(selection);
+            std::cout << "Invalid Input " << s << std::endl; } 
+    };
 
     friend  ostream& operator<<(ostream&, const Employee&);
 };
