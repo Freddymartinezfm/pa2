@@ -3,9 +3,7 @@
 #include <iostream>
 #include "OnOptionsMenu.h"
 
-OnOptionsMenu::OnOptionsMenu(){
-	
-}
+OnOptionsMenu::OnOptionsMenu() {}
 
 OnOptionsMenu::OnOptionsMenu(std::string title, int s) : title{title}, size{s}  {}
 
@@ -17,25 +15,19 @@ void OnOptionsMenu::menu(){
 	std::cout << "Select an option: " ;
 }
 
-
 void OnOptionsMenu::header(){
-	// std::cout <<  std::setw(85)  << std::setfill('=') << "=" << std::endl;
-	// std::cout 
-	std::cout << std::string(size, '-') << std::endl;
-	std::cout 
-	<< std::setw(8) 
-	<< std::setfill(' ')
-	<< std::left <<  "EmpCode"  
-	<< std::setw(15) <<  "SSN"
-	<< std::setw(18) << "Name"
-	<< std::setw(16) << "Dept"
-	<< std::setw(19) << "Role"
-	<< std::setw(9) << std::right << "Salary" 
-	<< std::endl;	
-	// std::cout <<  std::setw(85) << std::setfill('=') << "=" << std::endl;
-	// std::cout << std::setfill(' ') << std::endl;
-
 	std::cout << std::string(size, '-') << std::endl;
 
-	
+	std::cout
+		<< std::setw(8) 
+		<< std::setfill(' ')
+		<< std::left <<  "EmpCode"  
+		<< std::setw(15) <<  "SSN"
+		<< std::setw(18) << "Name"
+		<< std::setw(16) << "Dept"
+		<< std::setw(19) << "Role"
+		<< std::setw(9) << std::right << "Salary" 
+		<< std::endl;
+
+	std::cout << std::string(size, '-') << std::endl;	
 }

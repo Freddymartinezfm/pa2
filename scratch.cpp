@@ -1,42 +1,26 @@
-std::string code, ssn, first, last, dept, role,  salary;
-
-	p->setEmpCode(code);
-	p->setSSN(ssn);
-	p->setName(first, last);
-	p->setDept(dept);
-	p->setRole(role);
-	p->setSalary(std::stoi(salary));
-
-	
-
-	while (running){
-		std::string menuSelection;
-		std::cin >> menuSelection;
-
-		switch(std::stoi(menuSelection)){
-			case 1: // R1 - Display
-				std::cout << "option one selected results shown here " << std::endl;
-				//TODO search by SSN
-				menuOptions.menu();
-				break; 
-			case 6: // view
-				std::cout << "option six selected results shown here " << std::endl;
-				// show();
-				
+// working code but not actively used in code 
 
 
-				menuOptions.menu();
+// overloaded operators
+// bool Employee::operator<(const Employee& right){ return this->getSSN() < right.getSSN(); }
+// bool Employee::operator>(const Employee& right){ return this->getSSN() > right.getSSN(); }
+// bool Employee::operator==(Employee& right){ return this->getSSN() == right.getSSN(); }
 
-				break;
-			case 7: // exit
-				std::cout << "Program ended " << std::endl;
-				//TODO size and display
-				running = false;
-				
-				break;
-			default:
-				std::cout << "Invalid " << std::endl;
-				menuOptions.menu();
-				break;
-		}
-	}
+
+
+// print outs for headers and displaying to user 
+
+//replaced with std::string(numCharacters, '-'); << more efficient
+
+// std::cout <<  std::setw(85)  << std::setfill('=') << "=" << std::endl;
+// std::cout 
+// std::cout <<  std::setw(85) << std::setfill('=') << "=" << std::endl;
+// std::cout << std::setfill(' ') << std::endl;
+
+
+// int to string conversion 
+
+			// int a
+			// std::stringstream ss ;
+			// ss << a;
+			// std::string newA = ss.str();
